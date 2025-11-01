@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pop Culture — Future Aesthetics Exhibit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0c1a;
+      --card:#111023;
+      --accent1:#ff3b8d;
+      --accent2:#00ffd5;
+      --accent3:#ffd300;
+      --glass: rgba(255,255,255,0.06);
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Montserrat, system-ui, -apple-system, sans-serif; background:linear-gradient(180deg,var(--bg) 0%, #141226 60%);
+      color:#eef; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Navigation */
+    nav{display:flex;gap:18px;padding:18px 36px;align-items:center;position:sticky;top:0;background:linear-gradient(180deg, rgba(15,12,26,0.6), rgba(15,12,26,0.3));backdrop-filter: blur(6px);z-index:10}
+    .logo{font-family:Orbitron, Montserrat; font-weight:700; letter-spacing:1px; font-size:18px; cursor:pointer}
+    .navlinks{margin-left:auto;display:flex;gap:14px}
+    .navlinks a{color: #e8e8ff; text-decoration:none; padding:8px 12px; border-radius:10px; transition:transform .22s ease, background .22s}
+    .navlinks a:hover{transform:translateY(-4px); background: linear-gradient(90deg,var(--accent1),var(--accent2))}
+
+    /* Hero / Landing */
+    header.hero{min-height:70vh; display:grid;grid-template-columns:1fr 420px;align-items:center;gap:40px;padding:60px}
+    .hero-left{padding-right:30px}
+    .title{
+      font-family:Orbitron; font-size:56px; line-height:0.9; margin:0 0 16px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; position:relative;
+    }
+    /* animated title hover */
+    .title span{display:inline-block;transition: transform .45s cubic-bezier(.22,.9,.35,1);will-change: transform;backface-visibility: hidden;background: linear-gradient(90deg, var(--accent1), var(--accent2));-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;color: transparent;transform: translateZ(0);}
+    .title:hover span{ transform: translateY(-8px) rotate(-2deg) scale(1.04); }
+    .title span + span{ margin-left: 10px; }
+    .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent2),var(--accent3));color:#081017;font-weight:700;text-decoration:none}
+
+    /* hero right preview card */
+    .preview{background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); padding:22px;border-radius:16px; box-shadow: 0 8px 30px rgba(0,0,0,0.6)}
+    .preview h4{margin:0 0 10px;font-size:16px}
+    .trend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .chip{height:90px;border-radius:10px;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;color:#051019;font-weight:700}
+    .chip .label{font-size:13px}
+
+    /* Sections */
+    section{padding:56px 36px}
+    .section-head{display:flex;align-items:end;gap:16px}
+    .section-head h2{margin:0;font-family:Orbitron;font-size:28px}
+    .lead{max-width:820px;opacity:0.95}
+
+    /* Visual Trends grid */
+    .trends{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+    .trend{background:var(--card);border-radius:14px;padding:16px;overflow:hidden;position:relative;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .28s ease, box-shadow .28s}
+    .trend:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.75)}
+    .trend .title{font-weight:800;margin-bottom:6px}
+    .trend .desc{font-size:13px;opacity:0.9}
+    .trend .art{position:absolute;right:-20px;top:-20px;opacity:0.12;font-size:120px}
+
+    /* typography & color showcase */
+    .showcase{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+    .swatch{flex:1 1 220px;border-radius:12px;padding:16px;background:var(--glass);min-height:120px}
+    .font-sample{font-family:Orbitron;font-size:28px}
+
+    /* layout innovations */
+    .layout-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .overlap{position:relative}
+
+
+    /* contact / reflection */
+    .members{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .member{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(90deg,var(--accent3),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800}
+
+    footer{padding:36px;text-align:center;opacity:0.8}
+
+    /* small utility */
+    .muted{opacity:0.8}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo" onclick="location.href='#'">FutureAesthetics</div>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#trends">Visual Trends</a>
+      <a href="#typecolor">Typography & Color</a>
+      <a href="#layout">Layout Innovations</a>
+      <a href="#contact">Contact / Reflection</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-left">
+      <h1 class="title" aria-label="Pop Culture Future Aesthetics"><span>POP</span> <span>CULTURE</span> <span>EXHIBIT</span></h1>
+      <p class="subtitle lead">A digital exhibit that visually analyzes how pop culture shapes design, music, fashion and film exploring bright palettes, bold typography, motion, and a nostalgic-futuristic aesthetic we call <strong>"future aesthetics"</strong>.</p>
+      <a class="cta" href="#trends">Explore Trends</a>
+    </div>
+
+    <aside class="preview" aria-hidden="false">
+      <h4>Quick Preview</h4>
+      <div class="trend-grid">
+        <div class="chip" style="background:linear-gradient(135deg,var(--accent1),#ff8fb8)"><div class="label">Neon Palettes</div></div>
+        <div class="chip" style="background:linear-gradient(135deg,var(--accent2),#8fffe0)"><div class="label">Glitch Motion</div></div>
+        <div class="chip" style="background:linear-gradient(135deg,var(--accent3),#fff1a8)"><div class="label">Chrome Textures</div></div>
+        <div class="chip" style="background:linear-gradient(135deg,#7b8bff,#b38bff)"><div class="label">Surreal Composition</div></div>
+      </div>
+    </aside>
+  </header>
+
+  <main>
+    <!-- Visual Trends Page (Nav element 2) -->
+    <section id="trends">
+      <div class="section-head">
+        <h2>Visual Trends</h2>
+      </div>
+      <p class="lead">This section highlights current and emerging visual trends inspired by pop culture each card demonstrates a small compositional experiment with gradients, hover interactions, or motion.</p>
+
+      <div class="trends">
+        <article class="trend" style="background:linear-gradient(135deg,#ff4b9b,#ffd05b);">
+          <div class="art">✨</div>
+          <div class="title">Neon Retro</div>
+          <div class="desc">Bold neon gradients and chrome accents inspired by 80s synthwave. Hover to lift the card and reveal contrast.</div>
+        </article>
+
+        <article class="trend" style="background:linear-gradient(135deg,#00ffd5,#00a3ff);">
+          <div class="art">▦</div>
+          <div class="title">Glitch Motion</div>
+          <div class="desc">Micro-transitions, jitter and displacement create a digital 'glitch' feeling that implies movement and noise.</div>
+        </article>
+
+        <article class="trend" style="background:linear-gradient(135deg,#7b8bff,#b38bff);">
+          <div class="art">✦</div>
+          <div class="title">Surreal Overlays</div>
+          <div class="desc">Unexpected layering and surreal cropped imagery—playful proportions and collage-like composition.</div>
+        </article>
+
+        <article class="trend" style="background:linear-gradient(135deg,#ffd300,#ff8a00);">
+          <div class="art">⚙</div>
+          <div class="title">Futuristic UI</div>
+          <div class="desc">Soft glass panels, neon indicators and asymmetrical layouts evoking cinematic interfaces from film and games.</div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Typography & Color Page (Nav element 3) -->
+    <section id="typecolor">
+      <div class="section-head">
+        <h2>Typography & Color</h2>
+      </div>
+      <p class="lead">Fonts and color are core to the future aesthetic. Below are curated palettes and font treatments that together create high-impact, legible, and nostalgic-futuristic compositions.</p>
+
+      <div class="showcase">
+        <div class="swatch">
+          <div class="font-sample">ORBITRON</div>
+          <p class="muted">Display font for headlines — geometric, tech-inspired, bold.</p>
+        </div>
+        <div class="swatch" style="background:linear-gradient(90deg,#ff8fb8,#ff3b8d);">
+          <div class="font-sample">Neon</div>
+          <p class="muted">High-energy neon accent used to draw attention.</p>
+        </div>
+        <div class="swatch" style="background:linear-gradient(90deg,#00ffd5,#007bff);">
+          <div class="font-sample">Aqua</div>
+          <p class="muted">Cool cyan palettes to balance warm neons.</p>
+        </div>
+      </div>
+
+      <aside style="margin-top:18px;">
+        <p><strong>Accessibility note:</strong> Each palette should be tested for contrast — combine bright accents with darker neutrals to keep text legible.</p>
+      </aside>
+    </section>
+
+    <!-- Layout Innovations Page (Nav element 4) -->
+    <section id="layout">
+  <div class="section-head">
+    <h2>Layout Innovations</h2>
+  </div>
+
+  <p class="lead">
+    Explore layout techniques such as CSS Grid, overlapping elements, and asymmetry that create dynamic reading paths and cinematic composition.
+  </p>
+
+  <div class="layout-cards">
+
+    <div class="layout-card">
+      <div class="overlap">
+        <div class="a"></div>
+        <h3>Asymmetric Grid</h3>
+        <p class="muted">
+          A three-column grid with items that span multiple rows for visual rhythm.
+        </p>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Overlapping Elements</h3>
+      <p class="muted">
+        Layer cards and images to create depth. Shadows and blur help separate planes.
+      </p>
+    </div>
+
+    <div class="layout-card">
+      <h3>Flex & Responsiveness</h3>
+      <p class="muted">
+        Use Flexbox and Grid together to adapt complex layouts across devices.
+      </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Reflection Page (Nav element 5) -->
+    <section id="contact">
+      <div class="section-head"><h2>Contact & Reflection</h2></div>
+      <p class="lead">Below are short reflections from members on how they think design will evolve. This section can be expanded to include full statements and contact links.</p>
+
+      <div class="members">
+        <div class="member">
+          <div class="avatar">VJ</div>
+          <div>
+            <strong>Viktor J.</strong>
+            <div class="muted">"Design will blur lines between digital and tactile — more AR layers and sensory UI."</div>
+          </div>
+        </div>
+
+        <div class="member">
+          <div class="avatar">CE</div>
+          <div>
+            <strong>Cedric E.</strong>
+            <div class="muted">"Nostalgia will remix with future tech: vintage patterns used with motion and realtime lighting."</div>
+          </div>
+        </div>
+
+        <div class="member">
+          <div class="avatar">IZ</div>
+          <div>
+            <strong>Izak G.</strong>
+            <div class="muted">"Typography will become interactive — variable fonts that respond to music and motion."</div>
+          </div>
+        </div>
+
+      </div>
+
+      <form style="margin-top:18px;display:grid;grid-template-columns:1fr 140px;gap:12px;max-width:760px;">
+        <input placeholder="Your email" style="padding:12px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:inherit;" />
+        <button class="cta" type="button">Contact</button>
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault(); const id = a.getAttribute('href'); if(id === '#') return;
+        const el = document.querySelector(id); if(!el) return; el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+    const trends = document.querySelectorAll('.trend');
+    function reveal(){
+      trends.forEach(t=>{
+        const r = t.getBoundingClientRect();
+        if(r.top < window.innerHeight - 80) t.style.transform='translateY(0)';
+      });
+    }
+    window.addEventListener('scroll', reveal); reveal();
+  </script>
+</body>
+</html>
